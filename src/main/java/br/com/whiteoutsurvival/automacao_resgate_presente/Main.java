@@ -22,7 +22,7 @@ public class Main {
 
 		driver.manage().window().maximize();
 
-		String giftCode = "JPX100K";
+		String giftCode = "84oxP5QVv";
 
 		PageWhiteoutSurvival pwos = new PageWhiteoutSurvival(driver);
 		CalcResgate calc = new CalcResgate();
@@ -37,10 +37,10 @@ public class Main {
 
 			if (pwos.validarTextoPresenteModal(pwos.getTextoPositivo())) {
 				System.out.println("Resgate realizado para o usuário: "+user);
-				calc.setQtdUserResgatado(calc.getQtdUserNaoResgatado() + 1);
+				calc.incrementarMaisUmUserNaoResgatado();
 			} else if (pwos.validarTextoPresenteModal(pwos.getTextoNegativo())) {
 				System.out.println("Resgate já realizado pelo usuário: " +user);
-				calc.setQtdUserNaoResgatado(calc.getQtdUserResgatado() + 1);
+				calc.incrementarMaisUmUserResgatado();
 			} else {
 				System.out.println("Ocorreu algum erro. Tentando novamente...");
 				pwos.confirmarRegasteModal();
@@ -50,10 +50,10 @@ public class Main {
 				pwos.confirmarResgate();
 				if (pwos.validarTextoPresenteModal(pwos.getTextoPositivo())) {
 					System.out.println("Resgate realizado para o usuário: "+user);
-					calc.setQtdUserResgatado(calc.getQtdUserNaoResgatado() + 1);
+					calc.incrementarMaisUmUserNaoResgatado();
 				} else if (pwos.validarTextoPresenteModal(pwos.getTextoNegativo())) {
 					System.out.println("Resgate já realizado pelo usuário: " +user);
-					calc.setQtdUserNaoResgatado(calc.getQtdUserResgatado() + 1);
+					calc.incrementarMaisUmUserResgatado();
 				} else {
 					System.out.println("Não foi possível realizar o resgaste para o usuário: "+user);
 					calc.setUserComErroResgate(Arrays.asList(user));

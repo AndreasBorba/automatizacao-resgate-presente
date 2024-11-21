@@ -4,22 +4,31 @@ import java.util.List;
 
 public class CalcResgate {
 
-	private double qtdUserResgatado;
-	private double qtdUserNaoResgatado;
+	private int qtdUserResgatado;
+	private int qtdUserNaoResgatado;
 	private List<String> userComErroResgate;
 	
-	public double getQtdUserResgatado() {
+	public int getQtdUserResgatado() {
 		return qtdUserResgatado;
 	}
-	public void setQtdUserResgatado(double qtdUserResgatado) {
+	public void setQtdUserResgatado(int qtdUserResgatado) {
 		this.qtdUserResgatado = qtdUserResgatado;
 	}
-	public double getQtdUserNaoResgatado() {
+	public int getQtdUserNaoResgatado() {
 		return qtdUserNaoResgatado;
 	}
-	public void setQtdUserNaoResgatado(double d) {
+	
+	public void setQtdUserNaoResgatado(int d) {
 		this.qtdUserNaoResgatado = d;
 	}
+	
+	public void incrementarMaisUmUserNaoResgatado() {
+		this.qtdUserNaoResgatado++;
+	}
+	public void incrementarMaisUmUserResgatado() {
+		this.qtdUserResgatado++;
+	}
+	
 	public List<String> getUserComErroResgate() {
 		return userComErroResgate;
 	}
@@ -28,11 +37,13 @@ public class CalcResgate {
 	}
 	
 	public double getPorcentagemResgatado() {
-		return (getQtdUserResgatado() / (getQtdUserResgatado() + getQtdUserNaoResgatado())) * 100;
-	}
-	
-	public double getPorcentagemNaoResgatado() {
-		return (getQtdUserNaoResgatado() / (getQtdUserResgatado() + getQtdUserNaoResgatado())) * 100;
-	}
+        int total = getQtdUserResgatado() + getQtdUserNaoResgatado();
+        return total > 0 ? (getQtdUserResgatado() / (double) total) * 100 : 0;
+    }
+
+    public double getPorcentagemNaoResgatado() {
+        int total = getQtdUserResgatado() + getQtdUserNaoResgatado();
+        return total > 0 ? (getQtdUserNaoResgatado() / (double) total) * 100 : 0;
+    }
 	
 }
