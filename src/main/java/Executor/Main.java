@@ -1,4 +1,4 @@
-package br.com.whiteoutsurvival.automacao_resgate_presente;
+package Executor;
 
 import java.util.Arrays;
 
@@ -22,7 +22,7 @@ public class Main {
 
 		driver.manage().window().maximize();
 
-		String giftCode = "84oxP5QVv";
+		String giftCode = "eK5a7n3Kv";
 
 		PageWhiteoutSurvival pwos = new PageWhiteoutSurvival(driver);
 		CalcResgate calc = new CalcResgate();
