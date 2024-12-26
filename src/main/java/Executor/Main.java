@@ -22,7 +22,7 @@ public class Main {
 
 		driver.manage().window().maximize();
 
-		String giftCode = "eK5a7n3Kv";
+		String giftCode = "howasabajp";
 
 		PageWhiteoutSurvival pwos = new PageWhiteoutSurvival(driver);
 		CalcResgate calc = new CalcResgate();
